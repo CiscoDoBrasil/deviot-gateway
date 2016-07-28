@@ -1,0 +1,13 @@
+[Unit]
+Description=DevIoT Gateway Service
+Requires=dhcpcd.service
+
+[Service]
+Type=oneshot
+ExecStart=/opt/deviot-gateway/scripts/execute.sh start
+ExecStop=/opt/deviot-gateway/scripts/execute.sh stop
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+

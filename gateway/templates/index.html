@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+</head>
+<body>
+<h1>Hello, Gateway</h1>
+<h2>API</h2>
+<li>
+<h3>Get data from sensor</h3>
+    <div>
+    [GET]http://{{ip}}:{{port}}/api/data?name= {sensorid1}& name= {sensorid2}
+    </div>
+    <div>
+        [GET]http://{{ip}}:{{port}}/api/{user}/data?name= {sensorid1}& name= {sensorid2}
+    </div>
+    <h5>Example:</h5>
+    <dv>
+        http://{{ip}}:{{port}}/api/data?name=light&name=thermometer1
+    </dv>
+    <div>
+        http://{{ip}}:{{port}}/api/david@cisco.com/data?name=light&name=thermometer1
+    </div>
+    <h5>
+        Response:
+    </h5>
+    <di>
+        {
+        "thermometer1": {
+        "temperature": 25.95
+        },
+        "light": {
+        "brightness": 15
+        }
+        }
+
+    </di>
+    <br>
+</li>
+<li>
+    <h3>Activate sensor action</h3>
+    <div>
+        [PUT,POST]http://{{ip}}:{{port}}/api/action?name={sensorId}&action={actionName}&{actionParamater}=value
+    </div>
+    <div>
+        [PUT,POST]http://{{ip}}:{{port}}/api/{user}/action?name={sensorId}&action={actionName}&{actionParamater}=value
+    </div>
+    <h5>Example:</h5>
+    <dv>
+        http://{{ip}}:{{port}}/api/action?name=led_11&action=flash&duration=12&interval=1
+    </dv>
+    <div>
+        http://{{ip}}:{{port}}/api/david@cisco.com/action?name=led_11&action=flash&duration=12&interval=1
+    </div>
+
+</li>
+<h3>Modify the sensor setting</h3>
+<div>
+    [PUT,POST]http://{{ip}}:{{port}}/api/modify
+</div>
+<div>
+    [PUT,POST]http://{{ip}}:{{port}}/api/{user}/modify
+</div>
+<h5>Example:</h5>
+<dv>
+    http://{{ip}}:{{port}}/api/modify
+</dv>
+<div>
+    http://{{ip}}:{{port}}/api/david@cisco.com/modify
+</div>
+<h5>
+    Payload:
+</h5>
+<di>
+    {
+    "id":"PersonalDevice",
+    "settings":[
+    {
+    "name":"mac_address",
+    "value":"1234567"
+    }
+    ]
+    }
+
+
+</di>
+<br>
+</li>
+</body>
+</html>
